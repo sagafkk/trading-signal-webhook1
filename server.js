@@ -22,3 +22,22 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+
+// Endpoint تجريبي لإرجاع بيانات عند فتح الرابط مباشرة
+app.get('/', (req, res) => {
+    res.json({
+        symbol: "BTCUSD",
+        action: "buy",
+        price: 29000,
+        targets: [30000, 31000, 32000]
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
